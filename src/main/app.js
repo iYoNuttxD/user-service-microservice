@@ -23,6 +23,9 @@ export function createApp(container) {
   app.use(helmet());
 
   // CORS
+  // Note: CORS_ORIGIN='*' is intentional for development
+  // In production, set CORS_ORIGIN to specific allowed domains (comma-separated)
+  // Example: CORS_ORIGIN=https://app.example.com,https://admin.example.com
   const corsOrigin = process.env.CORS_ORIGIN || '*';
   app.use(cors({
     origin: corsOrigin === '*' ? '*' : corsOrigin.split(','),

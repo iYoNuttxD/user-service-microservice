@@ -9,7 +9,9 @@ export class Email {
       throw new Error('Email must be a non-empty string');
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Simple and safe email validation to prevent ReDoS
+    // Checks for basic pattern: local@domain.tld
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(value)) {
       throw new Error('Invalid email format');
     }
