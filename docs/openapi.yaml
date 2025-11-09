@@ -8,7 +8,7 @@ info:
 servers:
   - url: http://localhost:3011/api/v1
     description: Local development server
-  - url: https://user-service.azurewebsites.net/api/v1
+  - url: https://clickdelivery-user-service.azurewebsites.net/api/v1
     description: Production server (Azure)
 
 components:
