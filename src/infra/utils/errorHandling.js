@@ -1,3 +1,4 @@
+// src/infra/utils/errorHandling.js
 import { logger } from './logger.js';
 
 export class AppError extends Error {
@@ -47,6 +48,7 @@ export class InternalServerError extends AppError {
 }
 
 export function errorHandler(err, req, res, _next) {
+  const isKnownAppError = err instanceof AppError || err.isOperational === true;
   let error = err;
 
   // Handle mongoose validation errors
@@ -57,18 +59,35 @@ export function errorHandler(err, req, res, _next) {
 
   // Handle mongoose duplicate key errors
   if (err.code === 11000) {
-    const field = Object.keys(err.keyPattern)[0];
+    const field = Object.keys(err.keyPattern || {})[0] || 'Field';
     error = new ConflictError(`${field} already exists`);
   }
 
-  // Default to 500 if not an operational error
-  if (!error.isOperational) {
-    error = new InternalServerError();
+  const statusCode = error.statusCode || (isKnownAppError ? 400 : 500);
+
+  if (!isKnownAppError && !(error instanceof AppError)) {
+    // Log unexpected errors completely (para debugging real)
+    logger.error('Unexpected error', {
+      name: err.name,
+      message: err.message,
+      stack: err.stack,
+      path: req.path,
+      method: req.method,
+      correlationId: req.correlationId
+    });
+
+    // Return generic message to client
+    return res.status(500).json({
+      error: {
+        message: 'Internal server error',
+        statusCode: 500,
+        timestamp: new Date().toISOString(),
+        correlationId: req.correlationId
+      }
+    });
   }
 
-  const statusCode = error.statusCode || 500;
-
-  // Log error
+  // Log known errors (operacionais ou esperadas)
   logger.error(error.message, {
     statusCode,
     stack: error.stack,
@@ -77,8 +96,7 @@ export function errorHandler(err, req, res, _next) {
     correlationId: req.correlationId
   });
 
-  // Send response
-  res.status(statusCode).json({
+  return res.status(statusCode).json({
     error: {
       message: error.message,
       statusCode,
