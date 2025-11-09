@@ -1,0 +1,12 @@
+.git
+node_modules
+npm-debug.log
+coverage
+.env
+.env.*
+!.env.example
+*.md
+tests
+.eslintrc.json
+jest.config.js
+.dockerignore
