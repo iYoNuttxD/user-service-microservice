@@ -3,11 +3,11 @@
  * To be implemented by infrastructure layer
  */
 export class IPasswordHasher {
-  async hash(plainPassword) {
+  async hash(_plainPassword) {
     throw new Error('Method not implemented');
   }
 
-  async compare(plainPassword, hashedPassword) {
+  async compare(_plainPassword, _hashedPassword) {
     throw new Error('Method not implemented');
   }
 }

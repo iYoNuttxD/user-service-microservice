@@ -46,7 +46,7 @@ export class InternalServerError extends AppError {
   }
 }
 
-export function errorHandler(err, req, res, next) {
+export function errorHandler(err, req, res, _next) {
   let error = err;
 
   // Handle mongoose validation errors

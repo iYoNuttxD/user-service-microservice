@@ -3,31 +3,31 @@
  * To be implemented by infrastructure layer
  */
 export class IUserRepository {
-  async save(user) {
+  async save(_user) {
     throw new Error('Method not implemented');
   }
 
-  async findById(id) {
+  async findById(_id) {
     throw new Error('Method not implemented');
   }
 
-  async findByEmail(email) {
+  async findByEmail(_email) {
     throw new Error('Method not implemented');
   }
 
-  async findAll({ page = 1, limit = 10, filters = {} } = {}) {
+  async findAll(_options = {}) {
     throw new Error('Method not implemented');
   }
 
-  async update(id, updates) {
+  async update(_id, _updates) {
     throw new Error('Method not implemented');
   }
 
-  async delete(id) {
+  async delete(_id) {
     throw new Error('Method not implemented');
   }
 
-  async exists(email) {
+  async exists(_email) {
     throw new Error('Method not implemented');
   }
 }

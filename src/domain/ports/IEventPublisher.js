@@ -3,7 +3,7 @@
  * To be implemented by infrastructure layer
  */
 export class IEventPublisher {
-  async publish(subject, data) {
+  async publish(_subject, _data) {
     throw new Error('Method not implemented');
   }
 

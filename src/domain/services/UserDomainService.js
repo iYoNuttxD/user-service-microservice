@@ -1,6 +1,4 @@
 import { User } from '../entities/User.js';
-import { Email } from '../value-objects/Email.js';
-import { PasswordHash } from '../value-objects/PasswordHash.js';
 import { ROLES } from '../value-objects/Role.js';
 
 export class UserDomainService {

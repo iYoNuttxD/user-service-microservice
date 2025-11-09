@@ -1,4 +1,4 @@
-import { ConflictError, ValidationError } from '../../../../infra/utils/errorHandling.js';
+import { ConflictError } from '../../../../infra/utils/errorHandling.js';
 
 export class RegisterUserUseCase {
   constructor(userRepository, userDomainService, eventPublisher, metricsRegistry) {
