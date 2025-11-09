@@ -14,6 +14,7 @@ Microsserviço de gerenciamento de usuários pronto para produção, implementan
 - **Logs Estruturados**: Logging em JSON com mascaramento de dados sensíveis
 - **Docker Ready**: Containerização com multi-stage build e health checks
 - **Azure App Service**: Pronto para deploy em Azure Container Apps
+- **Imagem oficial no Docker Hub**: [https://hub.docker.com/r/iyonuttxd/user-service](https://hub.docker.com/r/iyonuttxd/user-service)
 
 ## 📋 Pré-requisitos
 
