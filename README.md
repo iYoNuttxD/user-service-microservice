@@ -2,6 +2,11 @@
 
 Microsserviço de gerenciamento de usuários pronto para produção, implementando autenticação JWT, autorização OPA, mensageria NATS e persistência MongoDB seguindo Clean Architecture e padrões de Vertical Slice.
 
+# Feito Por
+
+Daniel Ganz Musse, João Vitor de Souza Hernandes, Flavio Augusto da Cruz Melo, Matheus 
+Lowen, Enrico Malho Bozza 
+
 ## 🚀 Características
 
 - **Autenticação JWT**: Geração e validação de tokens JWT para autenticação de usuários
